@@ -80,7 +80,7 @@ export default function Home() {
             const geo = await axios.get(`http://ip-api.com/json/${hop.ip}`);
             return {
               ...hop,
-              hop: index + 1, // Add hop number based on index
+              // hop: index + 1, // Add hop number based on index
               lat: geo.data.lat,
               lon: geo.data.lon,
               city: geo.data.city,
