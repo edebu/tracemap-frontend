@@ -77,14 +77,14 @@ export default function Home() {
       const enriched: Location[] = await Promise.all(
         hops.map(async (hop: Hop, index: number) => {
           try {
-            const geo = await axios.get(`http://ip-api.com/json/${hop.ip}`);
+            const geo = await axios.get(`https://ipapi.co/${hop.ip}/json/`);
             return {
               ...hop,
               // hop: index + 1, // Add hop number based on index
-              lat: geo.data.lat,
-              lon: geo.data.lon,
+              lat: geo.data.latitude,
+              lon: geo.data.longitude,
               city: geo.data.city,
-              country: geo.data.country,
+              country: geo.data.country_name,
             };
           } catch (error) {
             console.error(`Failed to get geolocation for IP ${hop.ip}:`, error);
